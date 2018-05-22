@@ -1,0 +1,36 @@
+<!-- index.wxml
+<view class="container">
+  <view class="userinfo">
+    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
+    <block wx:else>
+      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
+      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+    </block>
+  </view>
+  <view class="usermotto">
+    <text class="user-motto">{{motto}}</text>
+  </view>
+</view> -->
+<!--index.wxml-->
+<view class="container">  
+  <view class="top">
+    <view>{{weather.city}}</view>
+    <view>{{weather.current.formattedDate}}</view>
+    <view>{{weather.current.formattedTime}} 更新</view>
+  </view>
+  <view class="topRegion">
+    <view id="temperature" >{{weather.current.temperature}}℃</view>
+    <view id="summary" >{{weather.current.summary}}</view>
+  </view>
+  <view class="summary" >
+    <view>{{weather.hourly.summary}}</view>
+    <view style="margin-top:20rpx">体感温度: {{weather.current.apparentTemperature}}℃</view>
+  </view>
+  <view class="daily" >
+    <view class="daily_item" wx:for="{{weather.daily.data}}">
+      <view class="daily_weekday" >{{item.weekday}}</view>
+      <view class="daily_temperature" >{{item.temperatureMin}}-{{item.temperatureMax}}℃ </view>      
+      <view class="daily_summary" >{{item.summary}}</view>
+    </view>
+  </view>
+</view>
