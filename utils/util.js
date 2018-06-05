@@ -1,7 +1,10 @@
+//  var ojb = require('cityObject.js')
+import {ojb} from 'cityObject'
+ console.log(ojb)
 
 //获取当前位置坐标
 function getLocation(callback) {
-
+  if(getApp().globalData.city==null){
   wx.getLocation({
 
     success: function (res) {
@@ -15,7 +18,40 @@ function getLocation(callback) {
 
     }
 
-  })
+  })}
+
+  else{
+    // switch(getApp().globalData.city){
+    //   case '天津':{
+    //     callback(true, res.latitude, res.longitude);
+    //   }
+
+    //   case '北京':{
+
+    //   }
+
+    //   default:{
+
+    //   }
+    // }
+
+    let longitude=null,latitude=null
+    for(var i =0;i<ojb.length;i++ ){
+      if(ojb[i].name===getApp().globalData.city){
+          longitude=ojb[i].log
+          latitude=ojb[i].lat
+          console.log(ojb[i])
+         
+          break
+
+         
+      }
+    }
+
+    callback(true, latitude, longitude);
+   
+
+  }
 
 }
 
@@ -48,16 +84,23 @@ function getCityName(latitude, longitude, callback) {
 function getWeatherByLocation(latitude, longitude, callback) {
 
   var apiKey = "5929ecae08828fc3ee3f728d4bc5a9c9";
-  var apiURL = "https://api.darksky.net/forecast/" + apiKey + "/" + latitude + "," + longitude + "?lang=zh&units=ca";
+  // var apiURL = "https://api.darksky.net/forecast/" + apiKey + "/" + latitude + "," + longitude + "?lang=zh&units=ca";
+  var apiURL = "https://www.52hanbao.top/1234"  ;
   console.log(apiURL)
   wx.request({
     url: apiURL,
+    data:{
+      'latitude': latitude,
+      'longitude':longitude
+    },
     success: function (res) {
 
       var weatherData = parseWeatherData(res.data);
       getCityName(latitude, longitude, function (city) {
         weatherData.city = city;
         callback(weatherData);
+        getApp().globalData.city = city;
+
       });
 
     }

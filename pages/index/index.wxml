@@ -16,7 +16,7 @@
   <view class="top">
     <view>{{weather.city}}</view>
     <view>{{weather.current.formattedDate}}</view>
-    <view>{{weather.current.formattedTime}} 更新</view>
+    <view bindtap="selectCity">{{weather.current.formattedTime}} 更新</view>
   </view>
   <view class="topRegion">
     <view id="temperature" >{{weather.current.temperature}}℃</view>

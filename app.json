@@ -1,6 +1,8 @@
 {
   "pages":[
     "pages/index/index",
+    "pages/citySelect/cs",
+
     "pages/logs/logs"
   ],
   "window":{
