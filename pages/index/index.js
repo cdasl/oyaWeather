@@ -69,8 +69,10 @@ Page({
   data: {
     weather: {}
   },
-  onLoad: function () {
-
+  onShow: function () {
+    wx.showLoading({
+      title: '请稍等',
+    })
     var that = this;
 
     util.loadWeatherData(function (data) {
@@ -80,10 +82,16 @@ Page({
         weather: data
       });
       // that.data.weather = data;
-
+    wx.hideLoading()
     });
     
 
+  },
+
+  selectCity: function (e) {
+    wx.navigateTo({
+      url: '../citySelect/cs'
+    })
   }
 
 })
