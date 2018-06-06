@@ -1,6 +1,5 @@
 //  var ojb = require('cityObject.js')
 import {ojb} from 'cityObject'
- console.log(ojb)
 
 //获取当前位置坐标
 function getLocation(callback) {
@@ -21,6 +20,8 @@ function getLocation(callback) {
   })}
 
   else{
+    console.log(147)
+    console.log(getApp().globalData.city)
     // switch(getApp().globalData.city){
     //   case '天津':{
     //     callback(true, res.latitude, res.longitude);
@@ -37,18 +38,18 @@ function getLocation(callback) {
 
     let longitude=null,latitude=null
     for(var i =0;i<ojb.length;i++ ){
-      if(ojb[i].name===getApp().globalData.city){
+      if (ojb[i].name + "市"  === getApp().globalData.city|| ojb[i].name === getApp().globalData.city){
           longitude=ojb[i].log
           latitude=ojb[i].lat
           console.log(ojb[i])
          
-          break
-
-         
+          callback(true, latitude, longitude);
+          return
       }
     }
+    callback(false);
 
-    callback(true, latitude, longitude);
+    
    
 
   }
@@ -72,6 +73,7 @@ function getCityName(latitude, longitude, callback) {
       var result
       if ((result = reg.exec(str)) != null) {
         result = JSON.parse(result)
+
       }
       callback(result["result"]["addressComponent"]["city"]);
 
@@ -86,7 +88,6 @@ function getWeatherByLocation(latitude, longitude, callback) {
   var apiKey = "5929ecae08828fc3ee3f728d4bc5a9c9";
   // var apiURL = "https://api.darksky.net/forecast/" + apiKey + "/" + latitude + "," + longitude + "?lang=zh&units=ca";
   var apiURL = "https://www.52hanbao.top/1234"  ;
-  console.log(apiURL)
   wx.request({
     url: apiURL,
     data:{
@@ -161,7 +162,7 @@ function requestWeatherData(cb) {
     //如果 GPS 信息获取不成功， 设置一个默认坐标
     if (success == false) {
       wx.showToast({
-        title: 'GPS未打开！',
+        title: '获取地址失败',
       })  
       latitude = 39.90403;
       longitude = 116.407526;
