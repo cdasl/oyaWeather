@@ -20,7 +20,6 @@ function getLocation(callback) {
   })}
 
   else{
-    console.log(147)
     console.log(getApp().globalData.city)
     // switch(getApp().globalData.city){
     //   case '天津':{
@@ -63,7 +62,7 @@ function getCityName(latitude, longitude, callback) {
 //http://api.map.baidu.com/geocoder/v2/?callback=renderReverse&location=39.983424,116.322987&output=json&pois=1&ak=SxP2nSAYeRqFuN8N2APU9Ps54CKN5sb0
 
   // var apiURL = "http://api.map.baidu.com/geocoder?output=json&location=" + latitude + "," + longitude + "&key=SxP2nSAYeRqFuN8N2APU9Ps54CKN5sb0";
-  var apiURL = "http://api.map.baidu.com/geocoder/v2/?callback=renderReverse&location=" + latitude + "," + longitude + "&output=json&pois=1&ak=EAK7dZeSc02DwTQdhj4jlNUSZPTrl7yM"
+  var apiURL = "https://api.map.baidu.com/geocoder/v2/?callback=renderReverse&location=" + latitude + "," + longitude + "&output=json&pois=1&ak=EAK7dZeSc02DwTQdhj4jlNUSZPTrl7yM"
 
   wx.request({
     url: apiURL,
