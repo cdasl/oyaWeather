@@ -45,7 +45,7 @@ Page({
         var end=(daymax-min)*180/deta+40;
         var context = wx.createContext();
         // 设置描边颜色
-        context.setStrokeStyle("#7cb5ec");
+        context.setStrokeStyle("#333");
         // 设置线宽
         context.setLineWidth(6);
         //设置字体样式
@@ -64,7 +64,7 @@ Page({
         context.beginPath();
         context.setStrokeStyle("#eee");
 
-        context.setFillStyle("#7cb5ec");
+        context.setFillStyle("#333");
         // 设置线宽
         context.setLineWidth(10);
 
