@@ -3,7 +3,7 @@
 <view class="gps"  data-text="{{city}}" bindtap = "wxSortPickerViewItemTap">
     {{city}} <text class="gpsif">当前选择城市</text>
     <view class="dw" catchtap ="cxgps">
-        <image style="width: 30px; height: 30px;position: absolute;top: 50%;left:40px;margin-top: -15px " src="{{src}}"></image>
+        <image style="width: 30px; height: 30px;position: absolute;top: 5px;left:40px;margin-left: 25px " src="{{src}}"></image>
     </view>
 </view>
 

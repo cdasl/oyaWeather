@@ -7,8 +7,9 @@
   ],
   "window":{
     "backgroundTextStyle":"light",
-    "navigationBarBackgroundColor": "#66ccff",
+    "navigationBarBackgroundColor": "#ccc",
     "navigationBarTitleText": "OyaWeather",
-    "navigationBarTextStyle":"black"
+    "navigationBarTextStyle":"black",
+    "enablePullDownRefresh": false
   }
 }

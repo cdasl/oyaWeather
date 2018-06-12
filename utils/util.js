@@ -140,6 +140,16 @@ function formatTime(timestamp) {
   return date.getHours() + ":" + minute;
 
 }
+function formatTime_forhour(timestamp){
+  var minute
+  var date = new Date(timestamp * 1000);
+  minute = date.getMinutes()
+  if(date.getMinutes() < 10){
+    minute = "0"+date.getMinutes().toString()
+  }
+  return date.getHours() +'时';
+
+}
 
 //中文形式的每周日期
 function formatWeekday(timestamp) {
@@ -189,7 +199,7 @@ function loadWeatherData(callback) {
     weatherData.current.formattedDate = formatDate(data.current.time);
     weatherData.current.formattedTime = formatTime(data.current.time);
     weatherData.current.temperature = parseInt(weatherData.current.temperature);
-
+    
     var wantedDaily = [];
     for (var i = 1; i < weatherData.daily.data.length; i++) {
 
@@ -198,8 +208,12 @@ function loadWeatherData(callback) {
       wantedDailyItem["weekday"] = formatWeekday(time);
       wantedDailyItem["temperatureMin"] = parseInt(weatherData.daily.data[i]["temperatureMin"])
       wantedDailyItem["temperatureMax"] = parseInt(weatherData.daily.data[i]["temperatureMax"])
-
       wantedDaily.push(wantedDailyItem);
+
+    }
+
+    for (var i = 1; i < weatherData.hourly.data.length; i++) {
+      weatherData.hourly.data[i].formattedTime=formatTime_forhour(data.hourly.data[i].time);
 
     }
 
@@ -209,7 +223,32 @@ function loadWeatherData(callback) {
   });
 
 }
+function DrawCanvas(){
+  for(var i=0;i<7;i++){
+    // var context = wx.createCanvasContext(i)
+    // context.setStrokeStyle("#00ff00")
+    // context.setLineWidth(5)
+    // context.moveTo(50, 70);
 
+    // context.lineTo(150, 150);
+    
+    // context.draw()
+    var context = wx.createContext();
+    // 设置描边颜色
+    context.setStrokeStyle("#7cb5ec");
+    // 设置线宽
+    context.setLineWidth(4);
+
+    context.moveTo(50, weather.daily.data[i].temperatureMin);
+    context.lineTo(450, weather.daily.data[i].temperatureMax);
+    // 对当前路径进行描边
+    context.stroke();
+    wx.drawCanvas({
+      canvasId: i,
+      actions: context.getActions()
+        });
+  }
+}
 
 module.exports = {
 

@@ -1,22 +1,75 @@
-<view class="container" style='background-image:url({{bgColor}})'>  
+<view class="container" >  
   <view class="top">
-    <view>{{weather.city}}</view>
-    <view>{{weather.current.formattedDate}}</view>
-    <view bindtap="selectCity">{{weather.current.formattedTime}} 更新</view>
+    <view class="cityselect" bindtap="selectCity">
+      <view class="cityname">{{weather.city}}</view> 
+    </view> 
+
+
   </view>
-  <view class="topRegion">
-    <view id="temperature" >{{weather.current.temperature}}℃</view>
-    <view id="summary" >{{weather.current.summary}}</view>
+
+  <view class="top2">
+    <view class="detail" >
+      风: {{weather.current.windSpeed}}kph
+    </view>
+    <view class="detail" >
+      湿度: {{weather.current.humidity}}
+    </view>
+    <view class="detail" >
+      紫外线等级: {{weather.current.uvIndex}}
+    </view>
+    <view class="detail" >
+      露点: {{weather.current.dewPoint}}
+    </view>
+    <view class="detail" >
+      气压: {{weather.current.pressure}}hPa
+    </view> 
+
+
   </view>
-  <view class="summary" >
-    <view>{{weather.hourly.summary}}</view>
-    <view style="margin-top:20rpx">体感温度: {{weather.current.apparentTemperature}}℃</view>
+
+  <view class="core">
+      <view class="corecore"> 
+        
+        <view class="corecorel" ><icon class="iconfont {{weather.current.icon}}" style="font-size:100px;color:#333;"></icon></view>
+        <view class="corecorer" ><view id="temperature" >{{weather.current.temperature}}℃</view>
+        <view id="currentsummary" >{{weather.current.summary}}</view></view>
+      </view>
+
+      <view class="summary" >
+        {{weather.hourly.summary}}
+    
+      </view>
+      
   </view>
-  <view class="daily" >
-    <view class="daily_item" wx:for="{{weather.daily.data}}">
-      <view class="daily_weekday" >{{item.weekday}}</view>
-      <view class="daily_temperature" >{{item.temperatureMin}}-{{item.temperatureMax}}℃ </view>      
-      <view class="daily_summary" >{{item.summary}}</view>
+
+
+  <scroll-view scroll-x class="hoursv" >
+    
+      <view  class="houritem" wx:for="{{weather.hourly.data}}">
+        <view class="hourblock1">{{item.apparentTemperature|Int}}℃</view>
+        <view class="hourblock2"><icon class="iconfont {{item.icon}}}" style="font-size:30px;color:#333;"></icon></view>
+        <view class="hourblock1"> {{index?item.formattedTime:"刚刚"}} </view>
+
+      </view>
+
+     
+    
+    
+
+
+
+  </scroll-view>
+
+   
+
+  <view class="daily_"  >
+    <view class="day_item" wx:for="{{weather.daily.data}}">
+      <view class="dayweather"><icon class="iconfont {{item.icon}}}" style="font-size:29px;color:#333;"></icon></view>
+
+      <view class="dayday" >{{index?item.weekday:"明天"}}</view>
+      <canvas class="Temcanvas" canvas-id="{{index+10}}"></canvas> 
     </view>
   </view>
+  
 </view>
+ 

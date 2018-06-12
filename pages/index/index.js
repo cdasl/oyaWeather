@@ -22,6 +22,69 @@ Page({
         weather: data
       });
       // that.data.weather = data;
+      // util.DrawCanvas()
+      
+
+      var max=-100,min=100
+      for(var i=0;i<7;i++){
+        if(data.daily.data[i].temperatureMin<min){min=data.daily.data[i].temperatureMin}
+
+        if(data.daily.data[i].temperatureMax>max){max=data.daily.data[i].temperatureMax}
+      }
+
+      console.log("min",min)
+      console.log("max",max)
+      var deta=max-min
+
+
+      for(var i=10;i<17;i++){
+
+        var daymin=data.daily.data[i-10].temperatureMin
+        var daymax=data.daily.data[i-10].temperatureMax
+        var start=(daymin-min)*180/deta+40;
+        var end=(daymax-min)*180/deta+40;
+        var context = wx.createContext();
+        // 设置描边颜色
+        context.setStrokeStyle("#7cb5ec");
+        // 设置线宽
+        context.setLineWidth(6);
+        //设置字体样式
+        context.font = "12px Courier New";
+        //设置字体填充颜色
+        context.fillStyle = "blue";
+        //从坐标点(50,50)开始绘制文字
+       
+        context.moveTo(start, 20);
+        context.lineTo(end, 20);
+        
+        // 对当前路径进行描边
+        context.stroke();
+
+
+        context.beginPath();
+        context.setStrokeStyle("#eee");
+
+        context.setFillStyle("#7cb5ec");
+        // 设置线宽
+        context.setLineWidth(10);
+
+          context.moveTo( start+7,20);
+          context.fillText(daymin+"℃", start-40, 23);
+          context.arc(start,20,8,0,2*Math.PI,false);
+          context.moveTo( end+7,20);
+          context.arc(end,20,8,0,2*Math.PI,false);
+          context.fillText(daymax+"℃", end+16, 23);
+        context.closePath();
+        context.stroke();
+        context.fill();
+        
+        wx.drawCanvas({
+            canvasId: i,
+            actions: context.getActions()
+        });
+      }
+
+
     wx.hideLoading()
     });
     
@@ -32,7 +95,11 @@ Page({
     wx.navigateTo({
       url: '../citySelect/cs'
     })
+  },
+  onPullDownRefresh: function(){
+    wx.startPullDownRefresh()
   }
+  
   
 
 })

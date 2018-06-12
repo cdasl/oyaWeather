@@ -1,4 +1,5 @@
  /* *app.wxss*
+ 
 .container {
   height: 100%;
   display: flex;
@@ -9,27 +10,16 @@
   box-sizing: border-box;
 }   */
 /**app.wxss**/
+@import "/lib/style/iconfont.wxss";
 .container {
-  height: 1200rpx;
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
   background-size: 100%;
-  padding: 20rpx;
+  
 } 
 
-.top {
 
-  flex-direction: row;
-}
-
-.top view {
-
-  color: #fff;
-  text-align: right;
-  font-size: 30rpx;
-  margin-bottom: 10rpx;
-}
 
 .topRegion {
   padding-top: 50rpx;
@@ -38,21 +28,13 @@
 }
 
 .topRegion #temperature {
-  color:#fff;
+  color:#666;
   float: left;
   font-size: 120rpx;
 
 }
 
-.topRegion #summary {
 
-  color:#FFF;
-  margin-left: 30rpx;
-  margin-top: 55rpx;
-  font-size: 50rpx;
-  float: left;    
-
-}
 
 .topRegion text {
   display: block;
@@ -61,18 +43,7 @@
   text-align: center;  
 }
 
-.summary {
 
-  margin-top: 50rpx;
-  background-color:rgba(0, 0, 0, 0.5);
-  padding: 18rpx;
-  color: #eee;
-  font-size: 30rpx;
-  line-height: 50rpx;
-  /*background-color: #66ccff;*/
-
-
-}
 
 .daily {
 
@@ -82,17 +53,7 @@
 
 }
 
-.daily_item {
 
-  float:left;
-  width:100%;
-  color: #FFF;  
-  height:80rpx;
-  padding-left: 20rpx;
-  /*line-height: 80rpx;*/
-  font-size: 30rpx;
-
-}
 
 .daily_weekday {
   

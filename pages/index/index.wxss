@@ -1,4 +1,5 @@
 /* *index.wxss*
+
 .userinfo {
   display: flex;
   flex-direction: column;
@@ -39,4 +40,152 @@
 
 .usermotto {
   margin-top: 200px;
+}
+.cityselect{
+  display:flex;
+  text-align:center;
+  padding:5px;
+  background-color:rgba(0, 0, 0, 0.1);
+  align-items: center;
+  justify-content: center;
+}
+.cityname
+{ 
+  font-size:29px;
+  padding:2px;
+  background-color:#FFF;
+  width:40%;
+  border-radius:15px;
+  color:#7cb5ec;
+}
+.top {
+  display:flex;
+  flex-direction: column;
+}
+
+.top view {
+
+  
+  
+  font-size: 25rpx;
+  
+}
+.top2{
+  display:flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding:1px;
+  background-color:#eff;
+}
+.detail{
+  display:flex;
+  font-size:10px;
+  margin:1px 5px;
+
+  color:#666;
+}
+.core{
+    display:flex;
+    justify-content: center;
+    padding:100rpx 20rpx 120rpx 20rpx;
+    flex-direction: column;
+    text-align:center;
+    align-items: center;
+
+
+}
+.corecorel{
+  margin:10rpx;
+}
+
+.corecorer{
+  margin:10rpx;
+}
+
+.corecore{
+  display:flex;
+  flex-direction: row;
+  margin:10rpx;
+}
+
+.corecore #temperature {
+  color:#666;
+ 
+  font-size: 100rpx;
+
+}
+
+.corecore #currentsummary {
+  color:#666;
+  
+  font-size: 65rpx;
+
+}
+
+.summary {
+
+  
+  
+  padding: 1rpx;
+  color:#333;
+  font-size: 35rpx;
+  line-height: 50rpx;
+  /*background-color: #66ccff;*/
+
+
+}
+.hoursv{
+  display:flex;
+  white-space: nowrap;
+  overflow: hidden;
+  padding:0 5px;
+}
+.houritem{
+  display:inline-block;
+  padding:5px;
+  align-items: center;
+  justify-content: center;
+
+}
+
+.day_item{
+  color:#666;
+  font-size: 30rpx;
+  padding:6rpx;
+  display: block;
+  float: left;     
+
+}
+.daily_item {
+
+  float:left;
+  width:100%;
+  color: #FFF;  
+  height:80rpx;
+  padding-left: 20rpx;
+  /*line-height: 80rpx;*/
+  font-size: 30rpx;
+
+}
+.Temcanvas{
+  display: block;
+  float: left;
+  height:36px;   
+  width:280px;  
+  
+}
+.dayday{
+   display: block;
+  float: left; 
+  font-size:16px;
+  margin:5px 0 3px 3px;    
+}
+.dayweather{
+  display: block;
+  float: left; 
+  margin-top:5px;
+}
+.daily_{
+  margin:20px 0 30px 0;
 }
