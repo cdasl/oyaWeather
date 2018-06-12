@@ -16,7 +16,7 @@
   flex-direction: column;
   box-sizing: border-box;
   background-size: 100%;
-  
+  background-color: #eee;
 } 
 
 
