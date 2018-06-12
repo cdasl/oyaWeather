@@ -98,8 +98,14 @@ Page({
   },
   onPullDownRefresh: function(){
     wx.startPullDownRefresh()
+  },
+  onShareAppMessage: function () {
+    return {
+      title: 'OyaWeather',
+      desc: 'A Simple and Powerful Weather App.',
+      path: '/page/index/index'
+    }
   }
-  
   
 
 })
